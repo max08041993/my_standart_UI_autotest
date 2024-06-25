@@ -245,8 +245,12 @@
                     <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <testFailureIgnore>false</testFailureIgnore>
                     <systemPropertyVariables>
-                        <allure.link.issue.pattern></allure.link.issue.pattern>
-                        <allure.link.tms.pattern></allure.link.tms.pattern>
+                        <allure.link.issue.pattern>
+
+                        </allure.link.issue.pattern>
+                        <allure.link.tms.pattern>
+
+                        </allure.link.tms.pattern>
                     </systemPropertyVariables>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10.jar"
