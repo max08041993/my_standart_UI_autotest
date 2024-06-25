@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    stages {
+        stage('Run Tests') {
+            parallel {
+                stage('Node1') {
+                    agent { label 'local' }
+                    steps {
+                        git(
+                            url: 'путь к проекту',
+                            credentialsId: 'id Jenkins ключа от git',
+                            branch: 'main'
+                        )
+                        bat 'mvn clean install "-Dcucumber.filter.tags=@test1"'
+                        stash includes: 'target/allure-results/**', name: 'allure-results-node1-stash'
+
+                    }
+                }
+                stage('Node2') {
+                    agent { label '2' }
+                    steps {
+                        git(
+                            url: 'путь к проекту',
+                            credentialsId: 'id Jenkins ключа от git',
+                            branch: 'main'
+                        )
+                        bat 'mvn clean install "-Dcucumber.filter.tags=@test2"'
+                        stash includes: 'target/allure-results/**', name: 'allure-results-node2-stash'
+                    }
+                }
+            }
+        }
+        stage('Create allure report') {
+            agent {
+                label 'local'
+            }
+            steps {
+                unstash 'allure-results-node1-stash'
+                unstash 'allure-results-node2-stash'
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [
+                            [path: 'target/allure-results']
+                        ]
+                    ])
+                }
+
+            }
+        }
+    }
+}
