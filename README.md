@@ -1,6 +1,6 @@
 # my_standart_UI_autotest
 Шаблон для UI автотестов.
-Стек: Java17, Maven, Spring, JUnit5, Selenide, Allure.
+Стек: Java17, Maven, Spring, JUnit5, Selenide, Cucumber, Allure.
 
 Так же есть настроенная возможность создавать проверки верстки с помощью скриншотов.
 
