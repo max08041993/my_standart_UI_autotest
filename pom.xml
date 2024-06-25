@@ -245,9 +245,8 @@
                     <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <testFailureIgnore>false</testFailureIgnore>
                     <systemPropertyVariables>
-                        <allure.link.issue.pattern>https://jira.invitro.ru/browse/{}</allure.link.issue.pattern>
-                        <allure.link.tms.pattern>
-                            http://testlink.invitro.ru/linkto.php?tprojectPrefix=INT&amp;item=testcase&amp;id={}</allure.link.tms.pattern>
+                        <allure.link.issue.pattern></allure.link.issue.pattern>
+                        <allure.link.tms.pattern></allure.link.tms.pattern>
                     </systemPropertyVariables>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10.jar"
